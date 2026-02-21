@@ -1,14 +1,29 @@
-<p align="right">
-    <img width=150px src="https://wallet-testnet.blockchain.ki/static/img/icons/ki-chain.png" />
-</p>
+# KI Networks Testnets
 
-# Ki Networks
-This repository hosts the resources for the Kichain testnet and mainnet networks.
+Конфигурации и инструкции для подключения к **testnet** сетям KI Network (Cosmos SDK).
 
-To join the Kichain network, you need first to install `ki-tools`. You can do it by following the dedicated tutorial that can be found [here](https://github.com/KiFoundation/ki-tools/blob/master/README.md).
+## Быстрое подключение
 
-- Please refer to the following [tutorial](https://medium.com/ki-foundation/how-to-join-the-kichain-mainnet-5ac7160d72e3) to join the Mainnet
-- Please refer to the following [tutorial](https://medium.com/ki-foundation/welcome-to-the-kazeki-testnet-840fa97ba29) to join the testnet
+### 1. Клонировать репозиторий
+```bash
+git clone https://github.com/arl-dev-py/ki-networks-testnets.git
+cd ki-networks-testnets
+2. Скачать genesis файлы
+bash
+# Основной testnet
+curl -o testnet-1/genesis.json https://rpc.testnet-1.ki.network/genesis
+curl -o testnet-1/addrbook.json https://rpc.testnet-1.ki.network/addrbook.json
 
-## Security
-If you discover a security vulnerability in this project, please report it to security@foundation.ki. We will promptly address all security vulnerabilities.
+# Все testnets
+./download-all.sh
+3. Запустить ноду
+bash
+# Установить KI binary
+curl -sSfL https://raw.githubusercontent.com/KiFoundation/ki-node/main/install.sh | bash
+export PATH=$PATH:~/.ki/bin
+
+# Инициализация
+kid init "MyNode" --chain-id testnet-1
+
+# Запуск
+kid start
